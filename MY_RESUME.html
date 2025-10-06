@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESUME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff9d;
+            --secondary: #00a2ff;
+            --dark: #0a1929;
+            --darker: #051120;
+            --light: #e6f7ff;
+            --gray: #8c98a4;
+            --card-bg: rgba(15, 35, 55, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--darker);
+            color: var(--light);
+            font-family: 'Roboto Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 162, 255, 0.05) 0%, transparent 20%),
+                linear-gradient(to bottom, var(--darker), var(--dark));
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+            margin-bottom: 40px;
+        }
+        
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-family: 'Share Tech Mono', monospace;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Section Styles */
+        .section {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 162, 255, 0.1);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 162, 255, 0.3);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        /* 新增：专业技能部分增加上边距 */
+        #skills-section {
+            margin-top: 50px; /* 增加上边距 */
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(0, 162, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .contact-item i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        /* List Styles */
+        .item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .item-title {
+            font-size: 1.2rem;
+            color: var(--light);
+            font-weight: 500;
+        }
+        
+        .item-subtitle {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+        
+        .item-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .item-content {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li:before {
+            content: ">";
+            color: var(--primary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* Terminal Effect */
+        .terminal {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        
+        .terminal-content {
+            color: var(--primary);
+        }
+        
+        .terminal-content .command {
+            color: var(--secondary);
+        }
+        
+        .terminal-content .path {
+            color: #ff79c6;
+        }
+        
+        .terminal-content .comment {
+            color: var(--gray);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .title {
+                font-size: 1rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            #skills-section {
+                margin-top: 30px;
+            }
+        }
+        
+	@media print {
+    		@page {
+        		size: auto;
+        		margin: 0mm;
+    		}
+    		
+    		body {
+        		margin: 1.5cm;
+        		-webkit-print-color-adjust: exact !important;
+        		print-color-adjust: exact !important;
+        		background: none;
+        		padding: 0;
+        		color: black !important;
+    		}
+    
+    		.container {
+        		padding: 0;
+    		}
+    
+    		.section {
+        		page-break-inside: avoid;
+        		break-inside: avoid;
+        		margin-bottom: 25px;
+        		box-shadow: none;
+        		border: 1px solid #ddd !important;
+        		background: white !important;
+        		color: black !important;
+    		}
+    
+    		#skills-section {
+        		margin-top: 40px;
+    		}
+    
+    		.no-print {
+        		display: none !important;
+    		}
+    
+    		a {
+        		color: black !important;
+        		text-decoration: underline !important;
+    		}
+    
+   		header {
+        		border-bottom-color: #ccc !important;
+    		}
+    
+    		.section-title {
+        		color: #333 !important;
+        		border-bottom-color: #ccc !important;
+    		}
+    
+    		.contact-item {
+        		background: transparent !important;
+        		border: 1px solid #eee !important;
+    		}
+		.item-title {
+        		color: #111 !important; 
+        		font-weight: 600 !important;
+    		}
+    
+    		.item-subtitle {
+        		color: #444 !important; 
+    		}
+    
+    		.item-header .item-title {
+        		color: #000 !important; 
+        		font-weight: 700 !important;
+    		}
+    
+    		.section-title {
+        		color: #222 !important;
+        		font-weight: 700 !important;
+    		}
+    
+    		.item-content {
+        		color: #333 !important;
+    		}
+    
+    		.item-date {
+        		color: #555 !important;
+   		}
+	}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">ZHU QIXUAN</h1>
+            <h2 class="title">CYS Student | CTF Learner</h2>
+            <p class="tagline">Focus on network security technology research, while also exploring AI</p>
+        </header>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>qixuanzhu005@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+86 17346260670</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+        
+        <div class="grid-container">
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-user-graduate"></i>EDUCATION BACKGROUND</h3>
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Xiamen University Malaysia</div>
+                            <div class="item-subtitle">Cyber Security</div>
+                        </div>
+                        <div class="item-date">2024 - 2028 ( Expect )</div>
+                    </div>
+                    <div class="item-content">
+                        <p>CGPA: 3.8/4.0 | Professional ranking: Top 10%</p>
+                        <p>Major courses: Computer Networks, Cryptography, Operating System Security, Reverse Engineering, Web Security</p>
+                        <p>Participated in multiple clubs during school, including Coding Club, AI Club, etc.</p>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Xiamen Double Ten Senior High School</div>
+                            <div class="item-subtitle">NOI</div>
+                        </div>
+                        <div class="item-date">2021 - 2024</div>
+                    </div>
+                    <div class="item-content">
+                        <p>CSP-S Second Round</p>
+                        <p>Master C++ Data Structure and Algorithms</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Added the Professional Skills sectionid="skills-section" -->
+            <div class="section" id="skills-section">
+                <h3 class="section-title"><i class="fas fa-shield-alt"></i> Professional Skills </h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Major in Technical Field</h4>
+                        <ul class="skill-list">
+                            <li>CTF Competition（Pwn/Reverse/Web）</li>
+                            <li>Vulnerability Analysis and Exploitation</li>
+                            <li>Network penetration testing</li>
+                            <li>Encryption and decryption</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Coding Language</h4>
+                        <ul class="skill-list">
+                            <li>C/C++（skilled）</li>
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>Assembly</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Part Time AI Major</h4>
+                        <ul class="skill-list">
+                            <li>Face recognition project - AI recognition part of enterprise face check-in system</li>
+                            <li>Image recognition projects - such as unmanned vehicle recognition of obstacles and road signs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Other</h4>
+                        <ul class="skill-list">
+                            <li>Have basic communication skills in Chinese and English</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-trophy"></i> Competitions and projects </h3>
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title"> CTF learning and research </div>
+                            <div class="item-subtitle"> Personal AI project, participated in the Shanghai Jiao Tong University Invitational Competition </div>
+                        </div>
+                        <div class="item-date">2024 - Present</div>
+                    </div>
+                    <div class="item-content">
+                        <p>• Systematically learn CTF problem-solving techniques and participate in multiple online CTF platform exercises </p>
+                        <p>• Create a personal shooting range environment to simulate various vulnerability scenarios </p>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">CSP-S Second Round</div>
+                            <div class="item-subtitle">NOI</div>
+                        </div>
+                        <div class="item-date">2021 - 2022</div>
+                    </div>
+                    <div class="item-content">
+                        <p>• Master algorithm design and optimization </p>
+                        <p>• Solve programming problems independently</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
